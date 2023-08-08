@@ -1,0 +1,106 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Emmanuel jimenez\\source\\repos\\chatIA\\chatIA\\chatIA.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Emmanuel jimenez\\source\\repos\\chatIA\\chatIA\\chatIA.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Emmanuel jimenez\\source\\repos\\chatIA\\chatIA\\chatIA.csproj",
+        "projectName": "chatIA",
+        "projectPath": "C:\\Users\\Emmanuel jimenez\\source\\repos\\chatIA\\chatIA\\chatIA.csproj",
+        "packagesPath": "C:\\Users\\Emmanuel jimenez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Emmanuel jimenez\\source\\repos\\chatIA\\chatIA\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Emmanuel jimenez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://enterprisedatahub.pkgs.visualstudio.com/_packaging/DnaSharedLibraries%40Local/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.60.0, )"
+            },
+            "Google.Apis.Gmail.v1": {
+              "target": "Package",
+              "version": "[1.60.0.3056, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "OpenAI-DotNet": {
+              "target": "Package",
+              "version": "[6.8.7, )"
+            },
+            "OpenAI.API": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "OpenAI.ChatGPT": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "OpenAI.ChatGPT.AspNetCore": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
