@@ -27,9 +27,13 @@ namespace chatIA.Controllers
         }
 
         [HttpPost]
-        [Route("actionsitems")]
-        public IActionResult GetResult([FromBody] EmailBodyRequest prompt)
+        [Route("actionsitemsmail")]
+        public IActionResult GetResult([FromBody] string prompt)
         {
+            if (prompt != "") {
+                prompt = prompt.Substring(0, 100);
+            }
+            
             //your OpenAI API key
             string apiKey = _configuration["AppSettings:OpenAiApiKey"];
 
@@ -37,7 +41,7 @@ namespace chatIA.Controllers
             string answer = string.Empty;
             var openai = new OpenAIAPI(apiKey);
             CompletionRequest completion = new CompletionRequest();
-            completion.Prompt = actionItems + prompt.EmailBody.ToString();
+            completion.Prompt = actionItems + prompt.ToString();
             completion.Model = Model.DavinciText;
             completion.MaxTokens = 4000;
             var result = openai.Completions.CreateCompletionAsync(completion);
@@ -70,6 +74,55 @@ namespace chatIA.Controllers
                 return BadRequest("No se encontró respuesta.");
             }
         }
+
+
+        [HttpPost]
+        [Route("actionsitems")]
+        public IActionResult GetResults([FromBody] EmailBodyRequest prompt)
+        {
+           
+
+            //your OpenAI API key
+            string apiKey = _configuration["AppSettings:OpenAiApiKey"];
+
+            string actionItems = "Extraer los action items de este texto y darmelos enumerados";
+            string answer = string.Empty;
+            var openai = new OpenAIAPI(apiKey);
+            CompletionRequest completion = new CompletionRequest();
+            completion.Prompt = actionItems + prompt.EmailBody.ToString();
+            completion.Model = Model.DavinciText;
+            completion.MaxTokens = 4000;
+            var result = openai.Completions.CreateCompletionAsync(completion);
+            if (result != null)
+            {
+                foreach (var item in result.Result.Completions)
+                {
+                    answer = item.Text;
+                }
+
+                // Verificar si el texto es spam
+                bool isSpam = IsSpam(answer);
+
+                if (!isSpam)
+                {
+
+
+                    var response = new { answer };
+                    string json = JsonConvert.SerializeObject(response);
+                    return Content(json, "application/json");
+
+                }
+                else
+                {
+                    return BadRequest("El texto es considerado como spam.");
+                }
+            }
+            else
+            {
+                return BadRequest("No se encontró respuesta.");
+            }
+        }
+
 
         private bool IsSpam(string text)
         {
