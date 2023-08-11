@@ -24,7 +24,7 @@ namespace chatIA.Controllers
         public IActionResult GetResult([FromBody] EmailBodyRequest prompt)
         {
             //your OpenAI API key
-            string apiKey = "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";
+            string apiKey = "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";
             string actionItems = "Extraer los action items de este texto y darmelos enumerados";
             string answer = string.Empty;
             var openai = new OpenAIAPI(apiKey);
