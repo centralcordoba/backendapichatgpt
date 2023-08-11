@@ -9,7 +9,9 @@ using Newtonsoft.Json;
 using OpenAI.API;
 using OpenAI.API.Completions;
 using OpenAI.API.Models;
+using System.Configuration;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace chatIA.Controllers
 {
@@ -17,14 +19,20 @@ namespace chatIA.Controllers
     [Route("api/[controller]")]
     public class EmailController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
 
+        public EmailController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         [HttpPost]
         [Route("actionsitems")]
         public IActionResult GetResult([FromBody] EmailBodyRequest prompt)
         {
             //your OpenAI API key
-            string apiKey = "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";
+            string apiKey = _configuration["AppSettings:OpenAiApiKey"];
+
             string actionItems = "Extraer los action items de este texto y darmelos enumerados";
             string answer = string.Empty;
             var openai = new OpenAIAPI(apiKey);
